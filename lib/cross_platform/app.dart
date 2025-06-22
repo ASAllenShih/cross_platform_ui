@@ -32,24 +32,30 @@ class App {
       ),
       CrossPlatformType.cupertino: () => CupertinoApp.router(
         title: title,
-        theme: MaterialBasedCupertinoThemeData(
-          materialTheme: ThemeData(
-            colorScheme: (themeMode == ThemeMode.dark
-                ? (darkColorScheme?.copyWith(brightness: Brightness.dark) ??
-                      lightColorScheme)
-                : themeMode == ThemeMode.light
-                ? lightColorScheme
-                : context != null
-                ? MediaQuery.platformBrightnessOf(context) == Brightness.dark
-                      ? (darkColorScheme?.copyWith(
-                              brightness: Brightness.dark,
-                            ) ??
-                            lightColorScheme)
-                      : lightColorScheme
-                : null),
-            useMaterial3: true,
-          ),
-        ),
+        theme:
+            MaterialBasedCupertinoThemeData(
+              materialTheme: ThemeData(
+                colorScheme: (themeMode == ThemeMode.dark
+                    ? (darkColorScheme ?? lightColorScheme)
+                    : themeMode == ThemeMode.light
+                    ? lightColorScheme
+                    : context != null
+                    ? MediaQuery.platformBrightnessOf(context) ==
+                              Brightness.dark
+                          ? (darkColorScheme ?? lightColorScheme)
+                          : lightColorScheme
+                    : null),
+                useMaterial3: true,
+              ),
+            ).copyWith(
+              brightness: themeMode == ThemeMode.dark
+                  ? Brightness.dark
+                  : themeMode == ThemeMode.light
+                  ? Brightness.light
+                  : context != null
+                  ? MediaQuery.platformBrightnessOf(context)
+                  : Brightness.light,
+            ),
         supportedLocales:
             supportedLocales ?? const <Locale>[Locale('en', 'US')],
         localizationsDelegates: localizationsDelegates,
