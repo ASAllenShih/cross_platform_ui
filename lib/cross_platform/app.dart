@@ -59,8 +59,20 @@ class App {
       ),
       CrossPlatformType.fluent: () => FluentApp.router(
         title: title ?? '',
-        theme: FluentThemeData(brightness: Brightness.light),
-        darkTheme: FluentThemeData(brightness: Brightness.dark),
+        theme: FluentThemeData(
+          brightness: Brightness.light,
+          accentColor: ThemeData(
+            colorScheme: lightColorScheme,
+            useMaterial3: true,
+          ).primaryColor.toAccentColor(),
+        ),
+        darkTheme: FluentThemeData(
+          brightness: Brightness.dark,
+          accentColor: ThemeData(
+            colorScheme: darkColorScheme,
+            useMaterial3: true,
+          ).primaryColor.toAccentColor(),
+        ),
         themeMode: themeMode,
         supportedLocales:
             supportedLocales ?? const <Locale>[Locale('en', 'US')],
@@ -108,7 +120,11 @@ class App {
           direction: Axis.vertical,
           children: [
             if (body != null) Flexible(child: body),
-            if (floatingActionButton != null) floatingActionButton,
+            if (floatingActionButton != null)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [floatingActionButton],
+              ),
             if (bottomSheet != null) bottomSheet,
           ],
         ),
