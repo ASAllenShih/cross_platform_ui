@@ -60,16 +60,14 @@ class App {
       CrossPlatformType.fluent: () => FluentApp.router(
         title: title ?? '',
         theme: FluentThemeData(
-          brightness: Brightness.light,
           accentColor: ThemeData(
             colorScheme: lightColorScheme,
             useMaterial3: true,
-          ).primaryColor.toAccentColor(),
+          ).primaryColorLight.toAccentColor(),
         ),
         darkTheme: FluentThemeData(
-          brightness: Brightness.dark,
           accentColor: ThemeData(
-            colorScheme: lightColorScheme,
+            colorScheme: darkColorScheme,
             useMaterial3: true,
           ).primaryColor.toAccentColor(),
         ),
