@@ -69,7 +69,7 @@ class App {
         darkTheme: FluentThemeData(
           brightness: Brightness.dark,
           accentColor: ThemeData(
-            colorScheme: darkColorScheme,
+            colorScheme: lightColorScheme,
             useMaterial3: true,
           ).primaryColor.toAccentColor(),
         ),
