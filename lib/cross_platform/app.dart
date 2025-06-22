@@ -64,14 +64,14 @@ class App {
           accentColor: ThemeData(
             colorScheme: lightColorScheme,
             useMaterial3: true,
-          ).primaryColor.toAccentColor(),
+          ).primaryColorLight.toAccentColor(),
         ),
         darkTheme: FluentThemeData(
           brightness: Brightness.dark,
           accentColor: ThemeData(
             colorScheme: darkColorScheme,
             useMaterial3: true,
-          ).primaryColor.toAccentColor(),
+          ).primaryColorDark.toAccentColor(),
         ),
         themeMode: themeMode,
         supportedLocales:
