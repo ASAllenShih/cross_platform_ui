@@ -48,13 +48,9 @@ class App {
                 useMaterial3: true,
               ),
             ).copyWith(
-              brightness: themeMode == ThemeMode.dark
-                  ? Brightness.dark
-                  : themeMode == ThemeMode.light
-                  ? Brightness.light
-                  : context != null
-                  ? MediaQuery.platformBrightnessOf(context)
-                  : Brightness.light,
+              textTheme: CupertinoTextThemeData(
+                primaryColor: material_widgets.Colors.white,
+              ),
             ),
         supportedLocales:
             supportedLocales ?? const <Locale>[Locale('en', 'US')],
