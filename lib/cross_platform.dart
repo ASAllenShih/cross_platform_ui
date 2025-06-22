@@ -1,14 +1,14 @@
-import 'package:cross_platfrom_ui/widgets/app.dart';
-import 'package:cross_platfrom_ui/widgets/button.dart';
-import 'package:cross_platfrom_ui/widgets/dialog.dart';
-import 'package:cross_platfrom_ui/widgets/field.dart';
-import 'package:cross_platfrom_ui/widgets/material_item.dart';
-import 'package:cross_platfrom_ui/widgets/modal.dart';
-import 'package:cross_platfrom_ui/widgets/section.dart';
-import 'package:cross_platfrom_ui/widgets/selection.dart';
-import 'package:cross_platfrom_ui/widgets/tile.dart';
+import 'package:cross_platfrom_ui/cross_platform/app.dart';
+import 'package:cross_platfrom_ui/cross_platform/button.dart';
+import 'package:cross_platfrom_ui/cross_platform/dialog.dart';
+import 'package:cross_platfrom_ui/cross_platform/field.dart';
+import 'package:cross_platfrom_ui/cross_platform/material_item.dart';
+import 'package:cross_platfrom_ui/cross_platform/modal.dart';
+import 'package:cross_platfrom_ui/cross_platform/section.dart';
+import 'package:cross_platfrom_ui/cross_platform/selection.dart';
+import 'package:cross_platfrom_ui/cross_platform/tile.dart';
 
-class Widgets {
+class CrossPlatform {
   static final appRouter = App.router;
   static final scaffold = App.scaffold;
   static final appBar = App.bar;
