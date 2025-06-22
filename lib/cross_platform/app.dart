@@ -102,7 +102,11 @@ class App {
           direction: Axis.vertical,
           children: [
             if (body != null) Flexible(child: body),
-            if (floatingActionButton != null) floatingActionButton,
+            if (floatingActionButton != null)
+              Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [floatingActionButton],
+              ),
             if (bottomSheet != null) bottomSheet,
           ],
         ),
