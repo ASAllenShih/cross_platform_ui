@@ -2,6 +2,7 @@ import 'package:cross_platform_ui/cross_platform_device_type.dart';
 import 'package:cross_platform_ui/cross_platform_type.dart';
 import 'package:cross_platform_ui/cross_platform_ui.dart';
 import 'package:fluent_ui/fluent_ui.dart';
+import 'package:fluent_ui/fluent_ui.dart' as fluent_widget show Colors;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as material_widgets show Colors;
@@ -65,7 +66,7 @@ class App {
         ),
         darkTheme: FluentThemeData(
           brightness: Brightness.dark,
-          accentColor: darkColorScheme?.onPrimary.toAccentColor(),
+          accentColor: fluent_widget.Colors.blue,
         ),
         themeMode: themeMode,
         supportedLocales:
