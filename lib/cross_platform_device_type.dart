@@ -1,5 +1,5 @@
-import 'package:cross_platfrom_ui/cross_platform_type.dart';
-import 'package:cross_platfrom_ui/cross_platfrom_ui.dart';
+import 'package:cross_platform_ui/cross_platform_type.dart';
+import 'package:cross_platform_ui/cross_platform_ui.dart';
 
 class CrossPlatformDeviceType {
   static CrossPlatformType? setting;

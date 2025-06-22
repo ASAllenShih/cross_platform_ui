@@ -1,6 +1,6 @@
-import 'package:cross_platfrom_ui/cross_platform_device_type.dart';
-import 'package:cross_platfrom_ui/cross_platform_type.dart';
-import 'package:cross_platfrom_ui/cross_platfrom_ui.dart';
+import 'package:cross_platform_ui/cross_platform_device_type.dart';
+import 'package:cross_platform_ui/cross_platform_type.dart';
+import 'package:cross_platform_ui/cross_platform_ui.dart';
 import 'package:fluent_ui/fluent_ui.dart' as fluent_widgets show ListTile;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart' as material_widgets show ListTile;
