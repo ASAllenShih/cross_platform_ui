@@ -17,6 +17,7 @@ class CrossPlatform {
   static final filledButton = Button.filled;
   static final dialogButton = Button.dialog;
   static final showDialog = Dialog.show;
+  static final alertDialog = Dialog.alert;
   static final textField = Field.text;
   static final textFormField = Field.textForm;
   static final textSearchField = Field.textSearch;
