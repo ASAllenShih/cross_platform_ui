@@ -165,14 +165,16 @@ class App {
                 .withAlpha(255),
       ),
       CrossPlatformType.fluent: () => NavigationAppBar(
-        leading: bottom != null
+        leading: leading,
+        title: bottom != null
             ? Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [leading ?? SizedBox.shrink(), bottom],
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [if (title != null) title, bottom],
               )
-            : null,
-        title: title,
+            : title,
         actions: actions != null ? Wrap(children: actions) : null,
+        height: 50.0 + (bottom?.preferredSize.height ?? 0.0),
       ),
     });
   }
