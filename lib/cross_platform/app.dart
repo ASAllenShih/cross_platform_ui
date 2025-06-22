@@ -161,10 +161,15 @@ class App {
       CrossPlatformType.fluent: () => NavigationAppBar(
         leading: leading,
         title: title,
-        actions: actions != null || bottom != null ? Wrap(children: [
-          if (actions != null) ...actions,
-          if (bottom != null) bottom,
-        ]) : null,
+        actions: actions != null || bottom != null
+            ? Wrap(
+                children: [
+                  if (actions != null) ...actions,
+                  if (bottom != null) bottom,
+                ],
+              )
+            : null,
+        height: bottom != null ? 50.0 + bottom.preferredSize.height : 50.0,
       ),
     });
   }
