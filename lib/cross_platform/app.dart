@@ -35,12 +35,16 @@ class App {
         theme: MaterialBasedCupertinoThemeData(
           materialTheme: ThemeData(
             colorScheme: (themeMode == ThemeMode.dark
-                ? (darkColorScheme ?? lightColorScheme)
+                ? (darkColorScheme?.copyWith(brightness: Brightness.dark) ??
+                      lightColorScheme)
                 : themeMode == ThemeMode.light
                 ? lightColorScheme
                 : context != null
                 ? MediaQuery.platformBrightnessOf(context) == Brightness.dark
-                      ? (darkColorScheme ?? lightColorScheme)
+                      ? (darkColorScheme?.copyWith(
+                              brightness: Brightness.dark,
+                            ) ??
+                            lightColorScheme)
                       : lightColorScheme
                 : null),
             useMaterial3: true,
@@ -102,11 +106,7 @@ class App {
           direction: Axis.vertical,
           children: [
             if (body != null) Flexible(child: body),
-            if (floatingActionButton != null)
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [floatingActionButton],
-              ),
+            if (floatingActionButton != null) floatingActionButton,
             if (bottomSheet != null) bottomSheet,
           ],
         ),
@@ -163,17 +163,14 @@ class App {
                 .withAlpha(255),
       ),
       CrossPlatformType.fluent: () => NavigationAppBar(
-        leading: leading,
-        title: title,
-        actions: actions != null || bottom != null
-            ? Wrap(
-                children: [
-                  if (actions != null) ...actions,
-                  if (bottom != null) bottom,
-                ],
+        leading: bottom != null
+            ? Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [leading ?? SizedBox.shrink(), bottom],
               )
             : null,
-        height: bottom != null ? 50.0 + bottom.preferredSize.height : 50.0,
+        title: title,
+        actions: actions != null ? Wrap(children: actions) : null,
       ),
     });
   }
