@@ -50,7 +50,16 @@ class App {
               ),
             ).copyWith(
               textTheme: CupertinoTextThemeData(
-                primaryColor: material_widgets.Colors.white,
+                primaryColor: (themeMode == ThemeMode.dark
+                    ? material_widgets.Colors.black
+                    : themeMode == ThemeMode.light
+                    ? material_widgets.Colors.white
+                    : context != null
+                    ? MediaQuery.platformBrightnessOf(context) ==
+                              Brightness.dark
+                          ? material_widgets.Colors.black
+                          : material_widgets.Colors.white
+                    : material_widgets.Colors.white),
               ),
             ),
         supportedLocales:
