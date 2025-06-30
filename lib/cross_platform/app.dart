@@ -31,29 +31,42 @@ class App {
         localizationsDelegates: localizationsDelegates,
         routerConfig: router,
       ),
-      CrossPlatformType.cupertino: () => CupertinoApp.router(
-        title: title,
-        theme:
-            MaterialBasedCupertinoThemeData(
-              materialTheme: ThemeData(
-                colorScheme: (themeMode == ThemeMode.dark
+      CrossPlatformType.cupertino: () {
+        final ThemeData materialTheme = ThemeData(
+          colorScheme: (themeMode == ThemeMode.dark
+              ? (darkColorScheme ?? lightColorScheme)
+              : themeMode == ThemeMode.light
+              ? lightColorScheme
+              : context != null
+              ? MediaQuery.platformBrightnessOf(context) == Brightness.dark
                     ? (darkColorScheme ?? lightColorScheme)
-                    : themeMode == ThemeMode.light
-                    ? lightColorScheme
-                    : context != null
-                    ? MediaQuery.platformBrightnessOf(context) ==
-                              Brightness.dark
-                          ? (darkColorScheme ?? lightColorScheme)
-                          : lightColorScheme
-                    : null),
-                useMaterial3: true,
-              ),
+                    : lightColorScheme
+              : null),
+          brightness: themeMode == ThemeMode.dark
+              ? Brightness.dark
+              : themeMode == ThemeMode.light
+              ? Brightness.light
+              : context != null
+              ? MediaQuery.platformBrightnessOf(context)
+              : Brightness.light,
+          useMaterial3: true,
+        );
+        return CupertinoApp.router(
+          title: title,
+          theme: MaterialBasedCupertinoThemeData(
+            materialTheme: materialTheme,
+          ).copyWith(
+            textTheme: CupertinoTextThemeData(
+              primaryColor: materialTheme.colorScheme.onPrimary,
+              navActionTextStyle: materialTheme.tabBarTheme.labelStyle,
             ),
-        supportedLocales:
-            supportedLocales ?? const <Locale>[Locale('en', 'US')],
-        localizationsDelegates: localizationsDelegates,
-        routerConfig: router,
-      ),
+          ),
+          supportedLocales:
+              supportedLocales ?? const <Locale>[Locale('en', 'US')],
+          localizationsDelegates: localizationsDelegates,
+          routerConfig: router,
+        );
+      },
       CrossPlatformType.fluent: () => FluentApp.router(
         title: title ?? '',
         theme: FluentThemeData(
