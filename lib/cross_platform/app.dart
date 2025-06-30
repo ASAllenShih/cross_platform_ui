@@ -183,6 +183,7 @@ class App {
                     ? CupertinoTheme.of(context).barBackgroundColor
                     : material_widgets.Colors.white)
                 .withAlpha(255),
+        automaticallyImplyLeading: true,
       ),
       CrossPlatformType.fluent: () => NavigationAppBar(
         leading: leading,
