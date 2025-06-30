@@ -157,10 +157,8 @@ class App {
             ? Theme.of(context).colorScheme.inversePrimary
             : null,
       ),
-      CrossPlatformType.cupertino: () => CupertinoNavigationBar(
-        leading: leading,
-        middle: title,
-        trailing: actions != null
+      CrossPlatformType.cupertino: () {
+        final Flex? trailing = actions != null
             ? Flex(
                 direction: Axis.horizontal,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -175,16 +173,30 @@ class App {
                   ),
                 ],
               )
-            : null,
-        bottom: bottom,
-        previousPageTitle: previousPageTitle,
-        backgroundColor:
+            : null;
+        final Color backgroundColor =
             (context != null
                     ? CupertinoTheme.of(context).barBackgroundColor
                     : material_widgets.Colors.white)
-                .withAlpha(255),
-        automaticallyImplyLeading: true,
-      ),
+                .withAlpha(255);
+        if (leading == null) {
+          return CupertinoNavigationBar(
+            middle: title,
+            trailing: trailing,
+            bottom: bottom,
+            previousPageTitle: previousPageTitle,
+            backgroundColor: backgroundColor,
+          );
+        }
+        return CupertinoNavigationBar(
+          leading: leading,
+          middle: title,
+          trailing: trailing,
+          bottom: bottom,
+          previousPageTitle: previousPageTitle,
+          backgroundColor: backgroundColor,
+        );
+      },
       CrossPlatformType.fluent: () => NavigationAppBar(
         leading: leading,
         title: bottom != null
