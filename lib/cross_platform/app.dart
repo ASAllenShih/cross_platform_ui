@@ -72,7 +72,7 @@ class App {
         title: title ?? '',
         theme: FluentThemeData(
           brightness: Brightness.light,
-          accentColor: lightColorScheme?.onPrimary.toAccentColor(),
+          accentColor: fluent_widget.Colors.blue,
         ),
         darkTheme: FluentThemeData(
           brightness: Brightness.dark,
