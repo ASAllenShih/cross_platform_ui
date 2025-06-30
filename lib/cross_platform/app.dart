@@ -48,19 +48,6 @@ class App {
                     : null),
                 useMaterial3: true,
               ),
-            ).copyWith(
-              textTheme: CupertinoTextThemeData(
-                primaryColor: (themeMode == ThemeMode.dark
-                    ? material_widgets.Colors.black
-                    : themeMode == ThemeMode.light
-                    ? material_widgets.Colors.white
-                    : context != null
-                    ? MediaQuery.platformBrightnessOf(context) ==
-                              Brightness.dark
-                          ? material_widgets.Colors.black
-                          : material_widgets.Colors.white
-                    : material_widgets.Colors.white),
-              ),
             ),
         supportedLocales:
             supportedLocales ?? const <Locale>[Locale('en', 'US')],
@@ -174,18 +161,12 @@ class App {
                 ],
               )
             : null;
-        final Color backgroundColor =
-            (context != null
-                    ? CupertinoTheme.of(context).barBackgroundColor
-                    : material_widgets.Colors.white)
-                .withAlpha(255);
         if (leading == null) {
           return CupertinoNavigationBar(
             middle: title,
             trailing: trailing,
             bottom: bottom,
             previousPageTitle: previousPageTitle,
-            backgroundColor: backgroundColor,
           );
         }
         return CupertinoNavigationBar(
@@ -194,7 +175,6 @@ class App {
           trailing: trailing,
           bottom: bottom,
           previousPageTitle: previousPageTitle,
-          backgroundColor: backgroundColor,
         );
       },
       CrossPlatformType.fluent: () => NavigationAppBar(
