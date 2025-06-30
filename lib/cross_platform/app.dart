@@ -55,8 +55,10 @@ class App {
           theme: MaterialBasedCupertinoThemeData(
             materialTheme: materialTheme,
           ).copyWith(
+            primaryColor: materialTheme.colorScheme.primary,
+            primaryContrastingColor: materialTheme.colorScheme.onPrimary,
             textTheme: CupertinoTextThemeData(
-              primaryColor: materialTheme.colorScheme.onPrimary,
+              primaryColor: materialTheme.colorScheme.primary,
               navActionTextStyle: materialTheme.tabBarTheme.labelStyle,
             ),
           ),
@@ -173,14 +175,6 @@ class App {
                 ],
               )
             : null;
-        if (leading == null) {
-          return CupertinoNavigationBar(
-            middle: title,
-            trailing: trailing,
-            bottom: bottom,
-            previousPageTitle: previousPageTitle,
-          );
-        }
         return CupertinoNavigationBar(
           leading: leading,
           middle: title,
