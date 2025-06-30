@@ -186,6 +186,7 @@ class App {
             bottom: bottom,
             previousPageTitle: previousPageTitle,
             backgroundColor: backgroundColor,
+            automaticBackgroundVisibility: false,
           );
         }
         return CupertinoNavigationBar(
@@ -195,6 +196,7 @@ class App {
           bottom: bottom,
           previousPageTitle: previousPageTitle,
           backgroundColor: backgroundColor,
+          automaticBackgroundVisibility: false,
         );
       },
       CrossPlatformType.fluent: () => NavigationAppBar(
