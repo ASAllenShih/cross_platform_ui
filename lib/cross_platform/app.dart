@@ -110,6 +110,7 @@ class App {
         child: Flex(
           direction: Axis.vertical,
           children: [
+            SizedBox(height: 44),
             if (body != null) Flexible(child: body),
             if (floatingActionButton != null)
               Row(
