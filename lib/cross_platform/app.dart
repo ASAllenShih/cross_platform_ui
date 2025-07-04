@@ -181,6 +181,8 @@ class App {
           trailing: trailing,
           bottom: bottom,
           previousPageTitle: previousPageTitle,
+          automaticBackgroundVisibility: false,
+          enableBackgroundFilterBlur: false,
         );
       },
       CrossPlatformType.fluent: () => NavigationAppBar(
