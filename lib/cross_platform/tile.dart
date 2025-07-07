@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cross_platform_ui/cross_platform_device_type.dart';
 import 'package:cross_platform_ui/cross_platform_type.dart';
 import 'package:cross_platform_ui/cross_platform_ui.dart';
@@ -14,8 +16,8 @@ class Tile {
     Widget? trailing,
     bool cupertinoTrailingWidget = false,
     Color? iconColor,
-    void Function()? onTap,
-    void Function()? onLongPress,
+    FutureOr<void> Function()? onTap,
+    FutureOr<void> Function()? onLongPress,
   }) {
     type ??= CrossPlatformDeviceType();
     return type.data({
@@ -42,13 +44,7 @@ class Tile {
                 children: [trailing, const CupertinoListTileChevron()],
               )
             : const CupertinoListTileChevron(),
-        onTap: () {
-          if (onTap is Function) {
-            onTap!();
-          } else if (onLongPress is Function) {
-            onLongPress!();
-          }
-        },
+        onTap: onTap ?? onLongPress,
       ),
       CrossPlatformType.fluent: () => fluent_widgets.ListTile(
         title: title,
@@ -57,13 +53,7 @@ class Tile {
             ? Container(color: iconColor, child: leading)
             : null,
         trailing: trailing,
-        onPressed: () {
-          if (onTap is Function) {
-            onTap!();
-          } else if (onLongPress is Function) {
-            onLongPress!();
-          }
-        },
+        onPressed: onTap ?? onLongPress,
       ),
     });
   }
