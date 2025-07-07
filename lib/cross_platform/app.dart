@@ -5,6 +5,7 @@ import 'package:fluent_ui/fluent_ui.dart';
 import 'package:fluent_ui/fluent_ui.dart' as fluent_widget show Colors;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' as material_widget show Colors;
 
 class App {
   static CrossPlatformUi router({
@@ -50,18 +51,23 @@ class App {
               : Brightness.light,
           useMaterial3: true,
         );
+        final CupertinoThemeData cupertinoTheme =
+            MaterialBasedCupertinoThemeData(
+              materialTheme: materialTheme,
+            ).copyWith(
+              primaryColor: materialTheme.colorScheme.primary,
+              primaryContrastingColor: materialTheme.colorScheme.onPrimary,
+              textTheme: CupertinoTextThemeData(
+                primaryColor: materialTheme.colorScheme.primary,
+                navActionTextStyle: materialTheme.tabBarTheme.labelStyle,
+              ),
+              barBackgroundColor: materialTheme.brightness == Brightness.light
+                  ? null
+                  : material_widget.Colors.black,
+            );
         return CupertinoApp.router(
           title: title,
-          theme: MaterialBasedCupertinoThemeData(
-            materialTheme: materialTheme,
-          ).copyWith(
-            primaryColor: materialTheme.colorScheme.primary,
-            primaryContrastingColor: materialTheme.colorScheme.onPrimary,
-            textTheme: CupertinoTextThemeData(
-              primaryColor: materialTheme.colorScheme.primary,
-              navActionTextStyle: materialTheme.tabBarTheme.labelStyle,
-            ),
-          ),
+          theme: cupertinoTheme,
           supportedLocales:
               supportedLocales ?? const <Locale>[Locale('en', 'US')],
           localizationsDelegates: localizationsDelegates,
