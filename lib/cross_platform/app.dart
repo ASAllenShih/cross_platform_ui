@@ -104,7 +104,7 @@ class App {
     type ??= CrossPlatformDeviceType();
     return type.data({
       CrossPlatformType.material: () => Scaffold(
-        body: body,
+        body: body != null ? SafeArea(child: body) : null,
         appBar: appBar is PreferredSizeWidget ? appBar : null,
         floatingActionButton: floatingActionButton,
         floatingActionButtonLocation: floatingActionButtonLocation,
@@ -113,32 +113,35 @@ class App {
       CrossPlatformType.cupertino: () => CupertinoPageScaffold(
         navigationBar: appBar is CupertinoNavigationBar ? appBar : null,
         resizeToAvoidBottomInset: true,
-        child: Flex(
-          direction: Axis.vertical,
-          children: [
-            SizedBox(height: 44),
-            if (body != null) Flexible(child: body),
-            if (floatingActionButton != null)
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [floatingActionButton],
-              ),
-            if (bottomSheet != null) bottomSheet,
-          ],
+        child: SafeArea(
+          child: Flex(
+            direction: Axis.vertical,
+            children: [
+              if (body != null) Flexible(child: body),
+              if (floatingActionButton != null)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [floatingActionButton],
+                ),
+              if (bottomSheet != null) bottomSheet,
+            ],
+          ),
         ),
       ),
       CrossPlatformType.fluent: () => NavigationView(
-        content: Flex(
-          direction: Axis.vertical,
-          children: [
-            if (body != null) Flexible(child: body),
-            if (floatingActionButton != null)
-              Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [floatingActionButton],
-              ),
-            if (bottomSheet != null) bottomSheet,
-          ],
+        content: SafeArea(
+          child: Flex(
+            direction: Axis.vertical,
+            children: [
+              if (body != null) Flexible(child: body),
+              if (floatingActionButton != null)
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [floatingActionButton],
+                ),
+              if (bottomSheet != null) bottomSheet,
+            ],
+          ),
         ),
         appBar: appBar is NavigationAppBar ? appBar : null,
       ),
