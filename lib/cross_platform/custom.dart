@@ -26,17 +26,19 @@ class Custom {
   static CrossPlatformUi futureWidget({
     CrossPlatformDeviceType? type,
     required FutureOr<Widget> future,
+    Widget? loadingWidget,
   }) {
     if (future is Widget) {
       return CrossPlatformUi(dataDefault: future);
     }
     type ??= CrossPlatformDeviceType();
+    loadingWidget ??= progressIndicator(type: type).widget;
     return type.data({
       CrossPlatformType.material: () => FutureBuilder<Widget>(
         future: future,
         builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return progressIndicator(type: type).widget;
+            return loadingWidget!;
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
@@ -48,7 +50,7 @@ class Custom {
         future: future,
         builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return progressIndicator(type: type).widget;
+            return loadingWidget!;
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
@@ -60,7 +62,7 @@ class Custom {
         future: future,
         builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return progressIndicator(type: type).widget;
+            return loadingWidget!;
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
