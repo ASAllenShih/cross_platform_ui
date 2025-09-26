@@ -4,15 +4,15 @@ version: 0.0.1
 homepage:
 
 environment:
-  sdk: ^3.8.1
-  flutter: ">=1.17.0"
+  sdk: ^3.9.2
+  flutter: ^3.35.4
 
 dependencies:
   flutter:
     sdk: flutter
   asallenshih_flutter_util:
     git: https://github.com/ASAllenShih/asallenshih_flutter_util
-  fluent_ui: ^4.12.0
+  fluent_ui: ^4.13.0
 
 dev_dependencies:
   flutter_test:
