@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:cross_platform_ui/cross_platform_device_type.dart';
 import 'package:cross_platform_ui/cross_platform_type.dart';
 import 'package:cross_platform_ui/cross_platform_ui.dart';
@@ -8,8 +10,11 @@ import 'package:flutter/material.dart';
 class Custom {
   static CrossPlatformUi futureWidget({
     CrossPlatformDeviceType? type,
-    required Future<Widget> future,
+    required FutureOr<Widget> future,
   }) {
+    if (future is Widget) {
+      return CrossPlatformUi(dataDefault: future);
+    }
     type ??= CrossPlatformDeviceType();
     return type.data({
       CrossPlatformType.material: () => FutureBuilder<Widget>(
