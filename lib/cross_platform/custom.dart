@@ -1,0 +1,53 @@
+import 'package:cross_platform_ui/cross_platform_device_type.dart';
+import 'package:cross_platform_ui/cross_platform_type.dart';
+import 'package:cross_platform_ui/cross_platform_ui.dart';
+import 'package:fluent_ui/fluent_ui.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
+class Custom {
+  static CrossPlatformUi futureWidget({
+    CrossPlatformDeviceType? type,
+    required Future<Widget> future,
+  }) {
+    type ??= CrossPlatformDeviceType();
+    return type.data({
+      CrossPlatformType.material: () => FutureBuilder<Widget>(
+        future: future,
+        builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CircularProgressIndicator();
+          } else if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          } else {
+            return snapshot.data!;
+          }
+        },
+      ),
+      CrossPlatformType.cupertino: () => FutureBuilder<Widget>(
+        future: future,
+        builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return CupertinoActivityIndicator();
+          } else if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          } else {
+            return snapshot.data!;
+          }
+        },
+      ),
+      CrossPlatformType.fluent: () => FutureBuilder<Widget>(
+        future: future,
+        builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
+          if (snapshot.connectionState == ConnectionState.waiting) {
+            return ProgressRing();
+          } else if (snapshot.hasError) {
+            return Text('Error: ${snapshot.error}');
+          } else {
+            return snapshot.data!;
+          }
+        },
+      ),
+    });
+  }
+}

@@ -1,5 +1,6 @@
 import 'package:cross_platform_ui/cross_platform/app.dart';
 import 'package:cross_platform_ui/cross_platform/button.dart';
+import 'package:cross_platform_ui/cross_platform/custom.dart';
 import 'package:cross_platform_ui/cross_platform/dialog.dart';
 import 'package:cross_platform_ui/cross_platform/field.dart';
 import 'package:cross_platform_ui/cross_platform/material_item.dart';
@@ -16,6 +17,7 @@ class CrossPlatform {
   static final elevatedButton = Button.elevated;
   static final filledButton = Button.filled;
   static final dialogButton = Button.dialog;
+  static final futureWidget = Custom.futureWidget;
   static final showDialog = Dialog.show;
   static final alertDialog = Dialog.alert;
   static final textField = Field.text;
