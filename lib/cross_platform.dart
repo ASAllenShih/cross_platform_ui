@@ -17,6 +17,7 @@ class CrossPlatform {
   static final elevatedButton = Button.elevated;
   static final filledButton = Button.filled;
   static final dialogButton = Button.dialog;
+  static final progressIndicator = Custom.progressIndicator;
   static final futureWidget = Custom.futureWidget;
   static final showDialog = Dialog.show;
   static final alertDialog = Dialog.alert;
