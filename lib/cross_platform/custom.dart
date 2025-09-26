@@ -8,6 +8,21 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Custom {
+  static CrossPlatformUi progressIndicator({
+    CrossPlatformDeviceType? type,
+    double? value,
+  }) {
+    type ??= CrossPlatformDeviceType();
+    return type.data({
+      CrossPlatformType.material: () => CircularProgressIndicator(value: value),
+      CrossPlatformType.cupertino: () => value == null
+          ? CupertinoActivityIndicator()
+          : CupertinoActivityIndicator.partiallyRevealed(progress: value),
+      CrossPlatformType.fluent: () =>
+          ProgressRing(value: value == null ? null : value / 100),
+    });
+  }
+
   static CrossPlatformUi futureWidget({
     CrossPlatformDeviceType? type,
     required FutureOr<Widget> future,
@@ -21,7 +36,7 @@ class Custom {
         future: future,
         builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CircularProgressIndicator();
+            return progressIndicator(type: type).widget;
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
@@ -33,7 +48,7 @@ class Custom {
         future: future,
         builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return CupertinoActivityIndicator();
+            return progressIndicator(type: type).widget;
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
@@ -45,7 +60,7 @@ class Custom {
         future: future,
         builder: (BuildContext context, AsyncSnapshot<Widget> snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
-            return ProgressRing();
+            return progressIndicator(type: type).widget;
           } else if (snapshot.hasError) {
             return Text('Error: ${snapshot.error}');
           } else {
