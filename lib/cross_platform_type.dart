@@ -1,1 +1,1 @@
-enum CrossPlatformType { material, cupertino, fluent }
+enum CrossPlatformType { all, material, cupertino, fluent }
