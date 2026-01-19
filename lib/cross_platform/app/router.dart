@@ -1,12 +1,14 @@
 import 'package:cross_platform_ui/cross_platform_type.dart';
 import 'package:cross_platform_ui/cross_platform_ui.dart';
+import 'package:cross_platform_ui/ui/widget/ui_widget.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:fluent_ui/fluent_ui.dart' as fluent_widget show Colors;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/material.dart' as material_widget show Colors;
 
-class CrossPlatformAppRouter extends CrossPlatformUi<CrossPlatformAppRouter> {
+class CrossPlatformAppRouter extends CrossPlatformUi<CrossPlatformAppRouter>
+    with UiWidget {
   CrossPlatformAppRouter({
     String? title,
     Iterable<Locale>? supportedLocales,
