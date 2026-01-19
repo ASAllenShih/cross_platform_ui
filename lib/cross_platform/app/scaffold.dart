@@ -4,12 +4,13 @@ import 'package:cross_platform_ui/method/cupertino/method_obstructing_preferred_
 import 'package:cross_platform_ui/method/fluent/method_navigation_app_bar.dart';
 import 'package:cross_platform_ui/method/method_preferred_size_widget.dart';
 import 'package:cross_platform_ui/method/method_widget.dart';
+import 'package:cross_platform_ui/ui/widget/ui_widget.dart';
 import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-class CrossPlatformAppScaffold
-    extends CrossPlatformUi<CrossPlatformAppScaffold> {
+class CrossPlatformAppScaffold extends CrossPlatformUi<CrossPlatformAppScaffold>
+    with UiWidget {
   CrossPlatformAppScaffold({
     dynamic appBar,
     dynamic body,
