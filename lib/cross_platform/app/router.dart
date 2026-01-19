@@ -26,12 +26,10 @@ class CrossPlatformAppRouter extends CrossPlatformUi<CrossPlatformAppRouter>
              theme: ThemeData(
                colorScheme: lightColorScheme,
                useMaterial3: true,
-               useSystemColors: true,
              ),
              darkTheme: ThemeData(
                colorScheme: darkColorScheme,
                useMaterial3: true,
-               useSystemColors: true,
              ),
              supportedLocales:
                  supportedLocales ?? const <Locale>[Locale('en', 'US')],
@@ -57,7 +55,6 @@ class CrossPlatformAppRouter extends CrossPlatformUi<CrossPlatformAppRouter>
                    ? MediaQuery.platformBrightnessOf(context)
                    : Brightness.light,
                useMaterial3: true,
-               useSystemColors: true,
              );
              return CupertinoApp.router(
                title: title,
