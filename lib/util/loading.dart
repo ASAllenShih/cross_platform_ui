@@ -36,6 +36,13 @@ class Loading {
         textAlign: TextAlign.center,
       ),
   ];
+
+  Widget get widget => Column(
+    mainAxisSize: MainAxisSize.min,
+    mainAxisAlignment: MainAxisAlignment.center,
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: widgets,
+  );
 }
 
 class LoadingWithProgress extends Loading {
