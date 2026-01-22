@@ -28,7 +28,13 @@ class Loading {
   }
 
   List<Widget> get widgets => <Widget>[
-    CrossPlatformProgressIndicator(type: crossPlatformType).widget,
+    Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        CrossPlatformProgressIndicator(type: crossPlatformType).widget,
+      ],
+    ),
     if (loadingText != null)
       Text(
         loadingText!,
