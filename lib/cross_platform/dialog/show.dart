@@ -12,11 +12,23 @@ Future<T?> dialogShow<T>({
 }) {
   type ??= CrossPlatformUi.typeDefault;
   if (type == CrossPlatformType.material) {
-    return material_widgets.showDialog<T>(context: context, builder: builder);
+    return material_widgets.showDialog<T>(
+      context: context,
+      builder: builder,
+      barrierDismissible: barrierDismissible ?? true,
+    );
   } else if (type == CrossPlatformType.cupertino) {
-    return showCupertinoDialog<T>(context: context, builder: builder);
+    return showCupertinoDialog<T>(
+      context: context,
+      builder: builder,
+      barrierDismissible: barrierDismissible ?? false,
+    );
   } else if (type == CrossPlatformType.fluent) {
-    return fluent_widgets.showDialog<T>(context: context, builder: builder);
+    return fluent_widgets.showDialog<T>(
+      context: context,
+      builder: builder,
+      barrierDismissible: barrierDismissible ?? false,
+    );
   } else {
     throw Exception('Unsupported dialog builder type');
   }
