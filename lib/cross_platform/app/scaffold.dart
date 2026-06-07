@@ -1,11 +1,9 @@
 import 'package:cross_platform_ui/cross_platform_type.dart';
 import 'package:cross_platform_ui/cross_platform_ui.dart';
 import 'package:cross_platform_ui/method/cupertino/method_obstructing_preferred_size_widget.dart';
-import 'package:cross_platform_ui/method/fluent/method_navigation_app_bar.dart';
 import 'package:cross_platform_ui/method/method_preferred_size_widget.dart';
 import 'package:cross_platform_ui/method/method_widget.dart';
 import 'package:cross_platform_ui/ui/widget/ui_widget.dart';
-import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -48,25 +46,6 @@ class CrossPlatformAppScaffold extends CrossPlatformUi<CrossPlatformAppScaffold>
                  ],
                ),
              ),
-           ),
-           CrossPlatformType.fluent: () => NavigationView(
-             content: SafeArea(
-               child: Flex(
-                 direction: Axis.vertical,
-                 children: [
-                   if (methodWidgetOrNull(body) != null)
-                     Flexible(child: methodWidget(body)),
-                   if (methodWidgetOrNull(floatingActionButton) != null)
-                     Row(
-                       mainAxisAlignment: MainAxisAlignment.end,
-                       children: [methodWidget(floatingActionButton)],
-                     ),
-                   if (methodWidgetOrNull(bottomSheet) != null)
-                     methodWidget(bottomSheet),
-                 ],
-               ),
-             ),
-             appBar: methodNavigationAppBar(appBar),
            ),
          },
        );

@@ -1,5 +1,3 @@
-import 'package:cross_platform_ui/cross_platform/button/elevated.dart';
-import 'package:cross_platform_ui/cross_platform/button/filled.dart';
 import 'package:cross_platform_ui/cross_platform_type.dart';
 import 'package:cross_platform_ui/cross_platform_ui.dart';
 import 'package:cross_platform_ui/method/method_widget.dart';
@@ -33,23 +31,6 @@ class CrossPlatformButtonDialog
              isDefaultAction: isDefaultAction,
              child: methodWidget(child),
            ),
-           CrossPlatformType.fluent: () => isDefaultAction
-               ? CrossPlatformButtonFilled(
-                   onPressed: onPressed,
-                   onLongPress: onLongPress,
-                   onHover: onHover,
-                   onFocusChange: onFocusChange,
-                   child: child,
-                   type: type,
-                 ).widget
-               : CrossPlatformButtonElevated(
-                   onPressed: onPressed,
-                   onLongPress: onLongPress,
-                   onHover: onHover,
-                   onFocusChange: onFocusChange,
-                   child: child,
-                   type: type,
-                 ).widget,
          },
        );
 }

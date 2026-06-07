@@ -11,7 +11,6 @@ class CrossPlatformRadio<T> extends CrossPlatformUi<CrossPlatformRadio<T>>
         datas: {
           CrossPlatformType.material: () => Radio<T>(value: value),
           CrossPlatformType.cupertino: () => CupertinoRadio<T>(value: value),
-          CrossPlatformType.fluent: () => Radio<T>(value: value),
         },
       );
 }

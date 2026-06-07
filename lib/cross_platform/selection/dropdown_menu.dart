@@ -5,7 +5,6 @@ import 'package:cross_platform_ui/cross_platform_type.dart';
 import 'package:cross_platform_ui/cross_platform_ui.dart';
 import 'package:cross_platform_ui/method/method_widget.dart';
 import 'package:cross_platform_ui/ui/widget/ui_widget.dart';
-import 'package:fluent_ui/fluent_ui.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -100,75 +99,6 @@ class CrossPlatformDropdownMenu<T>
              ),
              type: type,
            ).widget,
-           CrossPlatformType.fluent: () => DropDownButton(
-             title: Row(
-               mainAxisSize: MainAxisSize.min,
-               children: [
-                 if (methodWidgetOrNull(leadingIcon) != null)
-                   methodWidget(leadingIcon),
-                 if (methodWidgetOrNull(label) != null) methodWidget(label),
-                 if (dropdownMenuEntries
-                     .where(
-                       (DropdownMenuEntry<T> menu) =>
-                           menu.value == initialSelection,
-                     )
-                     .isNotEmpty)
-                   Row(
-                     mainAxisSize: MainAxisSize.min,
-                     children: [
-                       if (dropdownMenuEntries
-                               .where(
-                                 (DropdownMenuEntry<T> menu) =>
-                                     menu.value == initialSelection,
-                               )
-                               .first
-                               .leadingIcon !=
-                           null)
-                         dropdownMenuEntries
-                             .where(
-                               (DropdownMenuEntry<T> menu) =>
-                                   menu.value == initialSelection,
-                             )
-                             .first
-                             .leadingIcon!,
-                       Text(
-                         ': ${dropdownMenuEntries.where((DropdownMenuEntry<T> menu) => menu.value == initialSelection).first.label}',
-                       ),
-                       if (dropdownMenuEntries
-                               .where(
-                                 (DropdownMenuEntry<T> menu) =>
-                                     menu.value == initialSelection,
-                               )
-                               .first
-                               .trailingIcon !=
-                           null)
-                         dropdownMenuEntries
-                             .where(
-                               (DropdownMenuEntry<T> menu) =>
-                                   menu.value == initialSelection,
-                             )
-                             .first
-                             .trailingIcon!,
-                     ],
-                   ),
-               ],
-             ),
-             items: dropdownMenuEntries
-                 .map(
-                   (DropdownMenuEntry<T> dropdownMenuEntry) => MenuFlyoutItem(
-                     leading: dropdownMenuEntry.leadingIcon,
-                     text: Text(dropdownMenuEntry.label),
-                     trailing: dropdownMenuEntry.trailingIcon,
-                     onPressed: () {
-                       if (onSelected != null) {
-                         onSelected(dropdownMenuEntry.value);
-                       }
-                     },
-                     selected: initialSelection == dropdownMenuEntry.value,
-                   ),
-                 )
-                 .toList(),
-           ),
          },
        );
 }

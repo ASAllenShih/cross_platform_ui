@@ -1,11 +1,8 @@
 import 'package:cross_platform_ui/cross_platform_type.dart';
 import 'package:cross_platform_ui/cross_platform_ui.dart';
 import 'package:cross_platform_ui/ui/widget/ui_widget.dart';
-import 'package:fluent_ui/fluent_ui.dart';
-import 'package:fluent_ui/fluent_ui.dart' as fluent_widget show Colors;
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/material.dart' as material_widget show Colors;
 
 class CrossPlatformAppRouter extends CrossPlatformUi<CrossPlatformAppRouter>
     with UiWidget {
@@ -72,7 +69,7 @@ class CrossPlatformAppRouter extends CrossPlatformUi<CrossPlatformAppRouter>
                      barBackgroundColor:
                          materialTheme.brightness == Brightness.light
                          ? null
-                         : material_widget.Colors.black,
+                         : Colors.black,
                    ),
                supportedLocales:
                    supportedLocales ?? const <Locale>[Locale('en', 'US')],
@@ -80,22 +77,6 @@ class CrossPlatformAppRouter extends CrossPlatformUi<CrossPlatformAppRouter>
                routerConfig: router,
              );
            },
-           CrossPlatformType.fluent: () => FluentApp.router(
-             title: title ?? '',
-             theme: FluentThemeData(
-               brightness: Brightness.light,
-               accentColor: fluent_widget.Colors.blue,
-             ),
-             darkTheme: FluentThemeData(
-               brightness: Brightness.dark,
-               accentColor: fluent_widget.Colors.blue,
-             ),
-             themeMode: themeMode,
-             supportedLocales:
-                 supportedLocales ?? const <Locale>[Locale('en', 'US')],
-             localizationsDelegates: localizationsDelegates,
-             routerConfig: router,
-           ),
          },
        );
 }
